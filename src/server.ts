@@ -25,4 +25,9 @@ app.use(
 
 const port = process.env.PORT || 3000;
 app.get('/', (req: Request, res: Response) => res.send('Hello World!'));
+app.get('/users', async (req: Request, res: Response) => {
+    const users = await AppDataSource.getRepository('User').find();
+    res.json(users);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

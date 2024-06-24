@@ -8,9 +8,10 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "1234",
     database: "typeormdb",
-    synchronize: true,
+    synchronize: false,
     logging: true,
     entities: [User],
     subscribers: [],
     migrations: [],
+
 })
