@@ -1,7 +1,9 @@
-import { DataSource } from "typeorm";
-import { User } from "./entity/User";
-
-export const AppDataSource = new DataSource({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppDataSource = void 0;
+const typeorm_1 = require("typeorm");
+const User_1 = require("./entity/User");
+exports.AppDataSource = new typeorm_1.DataSource({
     type: "mysql",
     host: "localhost",
     port: 3306,
@@ -10,17 +12,15 @@ export const AppDataSource = new DataSource({
     database: "typeormdb",
     synchronize: false,
     logging: true,
-    entities: [User],
+    entities: [User_1.User],
     subscribers: [],
     migrations: [],
-
-})
-
+});
 // Initialize the data source (optional, depending on your application structure)
-AppDataSource.initialize()
-  .then(() => {
+exports.AppDataSource.initialize()
+    .then(() => {
     console.log("Data Source has been initialized!");
-  })
-  .catch((err) => {
+})
+    .catch((err) => {
     console.error("Error during Data Source initialization:", err);
-  });
+});
