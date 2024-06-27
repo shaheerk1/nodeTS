@@ -1,16 +1,12 @@
+// src/graphql/typeDefs.ts
+
 import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
-  type User {
-    id: Int!
-    name: String!
-    email: String!
-    password: String!
-  }
+  # Example: Custom scalar type
+  scalar Date
 
-  type Query {
-    users: [User]
-  }
+  # Add more types as needed...
 `;
 
 export default typeDefs;
