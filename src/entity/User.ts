@@ -2,6 +2,7 @@
 
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
+import bcrypt from 'bcryptjs';
 
 @Entity()
 @ObjectType()
@@ -18,7 +19,13 @@ export class User {
   @Column()
   name!: string;
 
-  @Field()
+  // @Field() // makes password field available in GraphQL schema
   @Column()
   password!: string; // Ensure 'password' type matches GraphQL schema
+
+  // Compare hashed password with plain text password
+  async comparePassword(plainPassword: string) {
+    return await bcrypt.compare(plainPassword, this.password);
+  }
 }
+
